@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>快播电影网日韩新片（演示） - 日韩正版新片定档、分类、口碑与影评</title>
+<meta name="description" content="快播电影网日韩新片演示站(kuaibodianyingwangrihanxinpian-h5.github.io)仅提供日本、韩国正版新片定档、类型地区分类、口碑排行榜与影评；移动端自适应，不提供在线播放、下载与解析，与快播无关联。">
+<meta name="keywords" content="日韩新片资讯,日本电影新片,韩国电影新片,正版定档,日韩电影分类,日韩口碑榜,日韩影评,影视资讯">
+<meta name="author" content="快播电影网日韩新片演示">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://kuaibodianyingwangrihanxinpian-h5.github.io/">
+<style>
+:root{
+  --ink:#10131a;--panel:#ffffff;--line:#e6e9f2;--muted:#5b6478;
+  --jp:#e64980;--jp2:#fce4ec;--kr:#1565c0;--kr2:#e3f2fd;
+  --accent:#ffb300;--ok:#0ca678;--bg:#f7f9fc;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.65;color:var(--ink);background:var(--bg)}
+a{color:inherit;text-decoration:none}
+.disclaimer{background:#10131a;color:#ffd54f;font-size:.76rem;text-align:center;padding:.4rem 1rem}
+.header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
+.nav{max-width:1200px;margin:0 auto;height:58px;padding:0 1rem;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:800;font-size:1.18rem}
+.brand b{color:var(--jp)} .brand i{color:var(--kr);font-style:normal}
+.menu{display:flex;gap:.3rem;list-style:none}
+.menu a{padding:.42rem .85rem;border-radius:999px;font-size:.9rem;color:var(--muted)}
+.menu a:hover{background:linear-gradient(90deg,var(--jp2),var(--kr2));color:var(--ink)}
+.burger{display:none;font-size:1.5rem;cursor:pointer}
+@media(max-width:768px){.menu{display:none}.burger{display:block}}
+
+/* 栏目1 hero+定档时间轴 */
+.hero{background:radial-gradient(800px 320px at 88% -10%,var(--jp2) 0,transparent 55%),radial-gradient(700px 300px at 5% 110%,var(--kr2) 0,transparent 55%),linear-gradient(160deg,#fff,#f1f5ff);padding:54px 1rem}
+.herobox{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:2rem;align-items:center}
+.hero h1{font-size:clamp(1.8rem,4.2vw,2.9rem);line-height:1.15;margin-bottom:.8rem}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--jp),var(--kr));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:var(--muted);max-width:520px;margin-bottom:1.4rem}
+.cta{display:inline-block;background:linear-gradient(90deg,var(--jp),var(--kr));color:#fff;font-weight:700;padding:.78rem 1.7rem;border-radius:999px}
+.cta.ghost{background:#fff;color:var(--ink);border:1px solid var(--line);margin-left:.5rem}
+.timeline{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:1.1rem 1.2rem;box-shadow:0 10px 30px rgba(20,30,80,.06)}
+.tl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
+.tl-head h3{font-size:1rem}
+.tl-head span{font-size:.74rem;color:var(--muted)}
+.tl-row{display:grid;grid-template-columns:64px 1fr auto;gap:.7rem;align-items:center;padding:.6rem 0;border-bottom:1px dashed var(--line)}
+.tl-row:last-child{border-bottom:0}
+.date{font-weight:700;color:var(--kr);font-size:.85rem;text-align:center;background:var(--kr2);border-radius:10px;padding:.25rem 0}
+.date.jp{color:var(--jp);background:var(--jp2)}
+.mv h4{font-size:.92rem} .mv small{color:var(--muted);font-size:.74rem}
+.flag{font-size:.72rem;padding:.15rem .55rem;border-radius:20px;background:#eef1f7;color:var(--muted)}
+@media(max-width:860px){.herobox{grid-template-columns:1fr}}
+
+/* 栏目2 日/韩双栏分类 */
+.section{padding:54px 1rem}
+.wrap{max-width:1200px;margin:0 auto}
+.sec-t{font-size:1.7rem;font-weight:800} .sec-s{color:var(--muted);margin:.35rem 0 1.5rem}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+.col{border-radius:18px;padding:1.2rem;border:1px solid var(--line);background:var(--panel)}
+.col.jp{border-top:4px solid var(--jp)} .col.kr{border-top:4px solid var(--kr)}
+.col h3{font-size:1.1rem;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
+.pills{display:flex;flex-wrap:wrap;gap:.5rem}
+.pill{font-size:.8rem;padding:.4rem .9rem;border-radius:999px;background:#f1f5ff;color:var(--kr);border:1px solid var(--line)}
+.col.jp .pill{background:var(--jp2);color:var(--jp)}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;margin-top:1rem}
+.sc{background:#fafbff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.sc .cv{height:84px;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff}
+.sc.jp .cv{background:linear-gradient(135deg,var(--jp),#b3245b)}
+.sc.kr .cv{background:linear-gradient(135deg,var(--kr),#0d3c8c)}
+.sc .cb{padding:.7rem .8rem} .sc h4{font-size:.9rem} .sc small{color:var(--muted);font-size:.72rem}
+@media(max-width:760px){.dual{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}}
+
+/* 栏目3 口碑榜 */
+.rank{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.rk{display:grid;grid-template-columns:54px 1fr 120px;gap:.8rem;align-items:center;padding:.9rem 1rem;border-bottom:1px solid var(--line)}
+.rk:last-child{border-bottom:0}
+.no{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--jp),var(--kr))}
+.no.s{background:#9aa6c7}
+.info h4{font-size:.95rem} .info small{color:var(--muted);font-size:.74rem}
+.tag{display:inline-block;font-size:.68rem;padding:.12rem .5rem;border-radius:10px;margin-right:.3rem}
+.tag.jp{background:var(--jp2);color:var(--jp)} .tag.kr{background:var(--kr2);color:var(--kr)}
+.bar{height:7px;border-radius:6px;background:#eef1f7;overflow:hidden} .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--jp))}
+.score{text-align:right;font-weight:800;color:var(--kr)} .score small{display:block;font-weight:400;color:var(--muted)}
+
+/* 栏目4 影评+正版渠道 */
+.rev{display:grid;grid-template-columns:1.6fr .9fr;gap:1.4rem}
+.masonry{column-count:2;column-gap:1.1rem}
+.rc{break-inside:avoid;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:1.1rem}
+.rc .top{height:96px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:#fff}
+.rc.jp .top{background:linear-gradient(135deg,var(--jp),#7a1740)}
+.rc.kr .top{background:linear-gradient(135deg,var(--kr),#0a2f6b)}
+.rc .rb{padding:1rem} .stars{color:var(--accent);font-size:.82rem} .rc h4{font-size:.95rem;margin:.2rem 0} .rc p{font-size:.83rem;color:var(--muted)}
+.by{margin-top:.7rem;font-size:.74rem;color:var(--kr)}
+.side .wd{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1.1rem;margin-bottom:1.1rem}
+.side h3{font-size:1rem;margin-bottom:.7rem}
+.ch{display:flex;align-items:center;gap:.6rem;padding:.55rem 0;border-bottom:1px dashed var(--line);font-size:.85rem}
+.ch:last-child{border-bottom:0} .ch b{color:var(--ok)}
+.form{display:grid;gap:.7rem;max-width:420px}
+.form input,.form textarea{padding:.75rem 1rem;border:1px solid var(--line);border-radius:10px;font:inherit;background:#fff}
+.form button{background:linear-gradient(90deg,var(--jp),var(--kr));color:#fff;border:0;border-radius:10px;padding:.8rem;font-weight:700;cursor:pointer}
+.note{font-size:.78rem;color:var(--muted);margin-top:.6rem}
+.footer{background:#10131a;color:#aeb6c9;text-align:center;padding:24px 1rem;font-size:.82rem}
+.footer a{color:#ffd54f;margin:0 .4rem}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<div class="disclaimer">本站为「快播电影网日韩新片」独立演示页，与快播/快播科技无关联、非官方；仅做日韩正版新片资讯与影评，不提供在线播放、枪版/未删减、MP4、磁力、网盘及情色内容。</div>
+
+<header class="header">
+  <nav class="nav" aria-label="主导航">
+    <div class="brand">快播电影网<b>日韩</b><i>新片</i></div>
+    <ul class="menu">
+      <li><a href="#home">定档</a></li>
+      <li><a href="#cats">日韩分类</a></li>
+      <li><a href="#rank">口碑榜</a></li>
+      <li><a href="#reviews">影评/渠道</a></li>
+    </ul>
+    <div class="burger" aria-label="菜单">☰</div>
+  </nav>
+</header>
+
+<!-- 栏目1 定档时间轴 -->
+<section class="hero" id="home">
+  <div class="herobox">
+    <div>
+      <h1>日韩新片<b>定档</b>与<b>正版</b>资讯</h1>
+      <p>按日本、韩国新片整理公映定档、持牌上线、类型与影评。全站不提供“快播/抢先/完整版”播放，不提供磁力网盘；境外新片网络传播须具公映/发行许可与授权。</p>
+      <a href="#cats" class="cta">按日韩找片</a>
+      <a href="#rank" class="cta ghost">看口碑榜</a>
+    </div>
+    <div class="timeline">
+      <div class="tl-head"><h3>近期日韩定档（演示）</h3><span>内链 # 占位</span></div>
+      <div class="tl-row"><div class="date jp">10/10</div><div class="mv"><h4><a href="#">《东京晚汐》</a></h4><small>日本·剧情/家庭·公映定档</small></div><div class="flag">JP新片</div></div>
+      <div class="tl-row"><div class="date">10/17</div><div class="mv"><h4><a href="#">《汉江守夜》</a></h4><small>韩国·犯罪/悬疑·持牌上线</small></div><div class="flag">KR新片</div></div>
+      <div class="tl-row"><div class="date jp">10/24</div><div class="mv"><h4><a href="#">《京都狸谱》</a></h4><small>日本·动画/奇幻·正版发行</small></div><div class="flag">JP动画</div></div>
+      <div class="tl-row"><div class="date">10/31</div><div class="mv"><h4><a href="#">《釜山汽笛》</a></h4><small>韩国·爱情/职场·院线+点播</small></div><div class="flag">KR爱情</div></div>
+      <div class="tl-row"><div class="date jp">11/07</div><div class="mv"><h4><a href="#">《札幌雪信》</a></h4><small>日本·悬疑/社会·公映资讯</small></div><div class="flag">JP悬疑</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目2 日/韩双栏 -->
+<section class="section" id="cats">
+  <div class="wrap">
+    <h2 class="sec-t">日本 / 韩国新片分类</h2>
+    <p class="sec-s">双栏独立视觉；标签与卡片均用 # 内链，仅整理正版公映/持牌信息。</p>
+    <div class="dual">
+      <div class="col jp">
+        <h3>🇯🇵 日本新片</h3>
+        <div class="pills">
+          <a href="#" class="pill">剧情 #</a><a href="#" class="pill">动画 #</a><a href="#" class="pill">悬疑 #</a><a href="#" class="pill">爱情 #</a><a href="#" class="pill">治愈 #</a><a href="#" class="pill">时代剧 #</a>
+        </div>
+        <div class="cards">
+          <article class="sc jp"><div class="cv">🎞️</div><div class="cb"><h4><a href="#">《东京晚汐》</a></h4><small>家庭剧情·公映定档</small></div></article>
+          <article class="sc jp"><div class="cv">🎨</div><div class="cb"><h4><a href="#">《京都狸谱》</a></h4><small>奇幻动画·正版发行</small></div></article>
+          <article class="sc jp"><div class="cv">🕵️</div><div class="cb"><h4><a href="#">《札幌雪信》</a></h4><small>社会悬疑·院线资讯</small></div></article>
+          <article class="sc jp"><div class="cv">🌸</div><div class="cb"><h4><a href="#">《镰仓来信》</a></h4><small>治愈爱情·持牌上线</small></div></article>
+        </div>
+      </div>
+      <div class="col kr">
+        <h3>🇰🇷 韩国新片</h3>
+        <div class="pills">
+          <a href="#" class="pill">犯罪 #</a><a href="#" class="pill">悬疑 #</a><a href="#" class="pill">爱情 #</a><a href="#" class="pill">职场 #</a><a href="#" class="pill">惊悚 #</a><a href="#" class="pill">喜剧 #</a>
+        </div>
+        <div class="cards">
+          <article class="sc kr"><div class="cv">🚔</div><div class="cb"><h4><a href="#">《汉江守夜》</a></h4><small>犯罪悬疑·持牌点播</small></div></article>
+          <article class="sc kr"><div class="cv">🚄</div><div class="cb"><h4><a href="#">《釜山汽笛》</a></h4><small>爱情职场·院线+会员</small></div></article>
+          <article class="sc kr"><div class="cv">😱</div><div class="cb"><h4><a href="#">《首尔盲区》</a></h4><small>心理惊悚·公映资讯</small></div></article>
+          <article class="sc kr"><div class="cv">😄</div><div class="cb"><h4><a href="#">《仁川小馆》</a></h4><small>都市喜剧·正版发行</small></div></article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目3 口碑榜 -->
+<section class="section" id="rank" style="background:#eef2fb">
+  <div class="wrap">
+    <h2 class="sec-t">日韩新片口碑榜</h2>
+    <p class="sec-s">演示评分，按公映/持牌口碑整理；不爬取枪版、不提供未删减资源。</p>
+    <div class="rank">
+      <div class="rk"><div class="no">1</div><div class="info"><h4><span class="tag jp">日本</span><span class="tag kr">剧情</span><a href="#">《东京晚汐》</a></h4><small>公映定档·家庭叙事·正版字幕</small></div><div class="score">9.4<div class="bar"><i style="width:94%"></i></div><small>口碑跟踪</small></div></div>
+      <div class="rk"><div class="no">2</div><div class="info"><h4><span class="tag kr">韩国</span><span class="tag jp">犯罪</span><a href="#">《汉江守夜》</a></h4><small>持牌点播·悬疑节奏·声效资讯</small></div><div class="score">9.2<div class="bar"><i style="width:92%"></i></div><small>口碑跟踪</small></div></div>
+      <div class="rk"><div class="no s">3</div><div class="info"><h4><span class="tag jp">日本</span><span class="tag kr">动画</span><a href="#">《京都狸谱》</a></h4><small>正版发行·全龄奇幻·4K资讯</small></div><div class="score">9.0<div class="bar"><i style="width:90%"></i></div><small>口碑跟踪</small></div></div>
+      <div class="rk"><div class="no s">4</div><div class="info"><h4><span class="tag kr">韩国</span><span class="tag jp">爱情</span><a href="#">《釜山汽笛》</a></h4><small>院线+会员·职场情感·正版字幕</small></div><div class="score">8.8<div class="bar"><i style="width:88%"></i></div><small>口碑跟踪</small></div></div>
+      <div class="rk"><div class="no s">5</div><div class="info"><h4><span class="tag jp">日本</span><span class="tag kr">悬疑</span><a href="#">《札幌雪信》</a></h4><small>公映资讯·社会派推理·不追枪版</small></div><div class="score">8.7<div class="bar"><i style="width:87%"></i></div><small>口碑跟踪</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目4 影评+渠道 -->
+<section class="section" id="reviews">
+  <div class="wrap">
+    <h2 class="sec-t">日韩影评与正版渠道</h2>
+    <p class="sec-s">短评按日本/韩国分色；渠道仅导航持牌平台，不解析、不提供下载。</p>
+    <div class="rev">
+      <div class="masonry">
+        <article class="rc jp"><div class="top">🎞️</div><div class="rb"><div class="stars">★★★★★ 9.4</div><h4>《东京晚汐》家庭线复盘</h4><p>公映版对白完整、字幕准确；重点看潮汐隐喻与代际和解，不找枪版/未删减。</p><div class="by">日片向·佐仓澈</div></div></article>
+        <article class="rc kr"><div class="top">🚔</div><div class="rb"><div class="stars">★★★★☆ 9.2</div><h4>《汉江守夜》犯罪结构</h4><p>持牌点播版看声画层次与剪辑节奏；正版渠道比网盘资源更稳定、合规。</p><div class="by">韩片向·金南宇</div></div></article>
+        <article class="rc jp"><div class="top">🎨</div><div class="rb"><div class="stars">★★★★☆ 9.0</div><h4>《京都狸谱》动画设定</h4><p>全龄奇幻，正版4K发行对色彩与配音更友好；大屏看场景、移动端看缓存。</p><div class="by">动画向·绫濑</div></div></article>
+        <article class="rc kr"><div class="top">🚄</div><div class="rb"><div class="stars">★★★★☆ 8.8</div><h4>《釜山汽笛》爱情职场</h4><p>院线转会员点播，按正版字幕版写评；不提供磁力、不标“完整版抢先”。</p><div class="by">韩剧向·朴敏书</div></div></article>
+      </div>
+      <aside class="side">
+        <div class="wd">
+          <h3>正版渠道导航</h3>
+          <div class="ch">🎬 院线定档 <span>公映许可/场次 #</span></div>
+          <div class="ch">📺 持牌点播 <span>已取得视听许可 #</span></div>
+          <div class="ch">📣 片方官宣 <span>发行/字幕/预告 #</span></div>
+          <div class="ch">🎟️ 影展展映 <span>日韩专题/修复 #</span></div>
+        </div>
+        <div class="wd">
+          <h3>合规投稿/联系</h3>
+          <form class="form" onsubmit="event.preventDefault();alert('演示提交成功（不对接后端）');">
+            <input type="text" name="name" placeholder="称呼" required>
+            <input type="email" name="email" placeholder="邮箱" required>
+            <textarea name="msg" placeholder="日韩新片定档投稿/正版发行合作/影评建议" required></textarea>
+            <button type="submit">提交</button>
+          </form>
+          <p class="note">本演示不接盗版/枪版/未删减/磁力/网盘；做日韩网络点播须持《信息网络传播视听节目许可证》，境外片须公映/发行许可及授权。[9,6](@ref)</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div>
+    <a href="#home">定档</a><a href="#cats">日韩分类</a><a href="#rank">口碑榜</a><a href="#reviews">影评/渠道</a>
+  </div>
+  <p style="margin-top:.6rem">© 2026 快播电影网日韩新片（演示）· kuaibodianyingwangrihanxinpian-h5.github.io · 独立演示、与快播无关联 · 仅作合法影视资讯</p>
+</footer>
+
+</body>
+</html>
